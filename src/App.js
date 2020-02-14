@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    number: 0
+  }
+
+  // clickMe = () => {
+  //   this.setState({
+  //     number: this.state.number 7})
+  // }
+
+  render () {
+    return (
+      <div className="container">
+        <div className="">
+          <h1>{this.state.number}</h1>
+        </div>
+        <div className="inner-container">
+          <Button onClick={this.clickMe} but="7"></Button>
+          <Button but="8"/>
+          <Button but="9"/>
+          <Button but="C"/>
+          <Button but="4"/>
+          <Button but="5"/>
+          <Button but="6"/>
+          <Button but="X"/>
+          <Button but="1"/>
+          <Button but="2"/>
+          <Button but="3"/>
+          <Button but="÷"/>
+          <Button but="0"/>
+          <Button but="+"/>
+          <Button but="-"/>
+          <Button but="="/>
+        </div>
+      
+        
+      </div>
+    )
+  }
 }
 
 export default App;
+
+const Button = (props) => {
+  return <button className="button">{props.but}</button>
+}
