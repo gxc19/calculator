@@ -3,40 +3,64 @@ import './App.css';
 
 class App extends Component {
   state = {
-    number: 0
+    input: " ",
   }
 
-  // clickMe = () => {
-  //   this.setState({
-  //     number: this.state.number 7})
-  // }
+  equation = (num) => {
+    this.setState({
+      input: this.state.input + num
+    })
+    if(num === "C"){
+      this.clear()
+    } else if(num === "="){
+      this.equals()
+    }
+  }
+
+  clear = () => {
+    this.setState({
+      input: " "
+    })
+    console.log("equation should clear")
+  }
+
+  equals = () => {
+    this.setState({
+      input: eval(this.state.input)
+    })
+    console.log("total")
+  }
 
   render () {
+    const buttonArr = ["7", "8", "9", "C", "4", "5", "6", "*", "1", "2", "3", "/", "0", "+", "-", "="]
     return (
       <div className="container">
-        <div className="">
-          <h1>{this.state.number}</h1>
+        <div className="display">
+          <h1 className="data">{this.state.input}</h1>
         </div>
         <div className="inner-container">
-          <Button onClick={this.clickMe} but="7"></Button>
-          <Button but="8"/>
-          <Button but="9"/>
-          <Button but="C"/>
-          <Button but="4"/>
-          <Button but="5"/>
-          <Button but="6"/>
-          <Button but="X"/>
-          <Button but="1"/>
-          <Button but="2"/>
-          <Button but="3"/>
-          <Button but="÷"/>
-          <Button but="0"/>
-          <Button but="+"/>
-          <Button but="-"/>
-          <Button but="="/>
+          {buttonArr.map((button, index) => {
+            return <Button key={index} but={button} click={this.equation}/>
+          })}
+
+
+          {/* <Button clickMe={this.equation} but="7">7</Button>
+          <Button clickMe={this.equation} but="8">8</Button>
+          <Button clickMe={this.equation} but="9">9</Button>
+          <Button clickMe={this.clear} but="C">C</Button>
+          <Button clickMe={this.equation} but="4">4</Button>
+          <Button clickMe={this.equation} but="5">5</Button>
+          <Button clickMe={this.equation} but="6">6</Button>
+          <Button clickMe={this.equation} but="*">x</Button>
+          <Button clickMe={this.equation} but="1">1</Button>
+          <Button clickMe={this.equation} but="2">2</Button>
+          <Button clickMe={this.equation} but="3">3</Button>
+          <Button clickMe={this.equation} but="/">÷</Button>
+          <Button clickMe={this.equation} but="0">0</Button>
+          <Button clickMe={this.equation} but="+">+</Button>
+          <Button clickMe={this.equation} but="-">-</Button>
+          <Button clickMe={this.equals} but="=">=</Button> */}
         </div>
-      
-        
       </div>
     )
   }
@@ -44,6 +68,9 @@ class App extends Component {
 
 export default App;
 
+
 const Button = (props) => {
-  return <button className="button">{props.but}</button>
+  return (
+  <button className="button" onClick={()=>props.click(props.but)}>{props.but}</button>
+  )
 }

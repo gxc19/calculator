@@ -6,9 +6,16 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  
+  flex-direction: column; 
 }
+
+.display{
+  height: 75px;
+  width: 270px;
+  background-color: rgb(224, 224, 224);
+  border-radius: 5%;
+}
+
 
 .inner-container{
   display: flex;
