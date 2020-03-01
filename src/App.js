@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="display">
-          <h1 className="data">{this.state.input}</h1>
+          <h1>{this.state.input}</h1>
         </div>
         <div className="inner-container">
           {buttonArr.map((button, index) => {
