@@ -1,1 +1,3 @@
-This is a functional calculator which was made using React
+My first attempt at creating a React app.
+
+This is a fully functional calculator.
